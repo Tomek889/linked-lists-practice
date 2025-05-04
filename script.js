@@ -131,8 +131,8 @@ class LinkedList {
     const newNode = new Node(value);
 
     if (index === 0) {
-        this.prepend(value);
-        return;
+      this.prepend(value);
+      return;
     }
 
     let previousNode = this.at(index - 1);
@@ -143,7 +143,27 @@ class LinkedList {
       newNode.nextNode = nextNode;
       return;
     }
-    throw Error('Index is out-of-bound.');
+    throw Error("Index is out-of-bound.");
+  }
+
+  removeAt(index) {
+    if (index === 0) {
+      if (!this.head) {
+        throw Error("Index is out-of-bound.");
+      }
+      this.head = this.head.nextNode;
+      return;
+    }
+
+    let previousNode = this.at(index - 1);
+    let currentNode = this.at(index);
+    let nextNode = this.at(index + 1);
+
+    if (currentNode) {
+      previousNode.nextNode = nextNode;
+      return;
+    }
+    throw Error("Index is out-of-bound.");
   }
 }
 
@@ -153,16 +173,3 @@ class Node {
     this.nextNode = nextNode;
   }
 }
-
-// testing
-const list = new LinkedList();
-
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-
-list.insertAt("costam", 3);
-console.log(list.toString());
