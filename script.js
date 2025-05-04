@@ -60,15 +60,30 @@ class LinkedList {
     let current = this.head;
 
     while (current && index !== 0) {
-        index--;
-        current = current.nextNode;
+      index--;
+      current = current.nextNode;
     }
 
     return current;
   }
 
   pop() {
+    let current = this.head;
 
+    if (!current) {
+      return;
+    }
+
+    if (!current.nextNode) {
+      this.head = null;
+      return;
+    }
+
+    while (current.nextNode.nextNode) {
+      current = current.nextNode;
+    }
+
+    current.nextNode = null;
   }
 
   contains(value) {
@@ -89,11 +104,11 @@ class LinkedList {
     let index = 0;
 
     while (current) {
-        if (current.value === value) {
-            return index;
-        }
-        current = current.nextNode;
-        index++;
+      if (current.value === value) {
+        return index;
+      }
+      current = current.nextNode;
+      index++;
     }
 
     return null;
@@ -101,14 +116,14 @@ class LinkedList {
 
   toString() {
     let current = this.head;
-    let path = '';
+    let path = "";
 
     while (current) {
-        path += `( ${current.value} ) -> `;
-        current = current.nextNode;
+      path += `( ${current.value} ) -> `;
+      current = current.nextNode;
     }
 
-    path += 'null';
+    path += "null";
     return path;
   }
 }
@@ -120,15 +135,10 @@ class Node {
   }
 }
 
-
 // testing
 const list = new LinkedList();
 
 list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
 
+list.pop();
 console.log(list.toString());
