@@ -57,7 +57,14 @@ class LinkedList {
   }
 
   at(index) {
-    
+    let current = this.head;
+
+    while (current && index !== 0) {
+        index--;
+        current = current.nextNode;
+    }
+
+    return current;
   }
 }
 
@@ -68,6 +75,15 @@ class Node {
   }
 }
 
-let l = new LinkedList();
 
-console.log(l.getTail());
+// testing
+const list = new LinkedList();
+
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
+
+console.log(list.at(8));
