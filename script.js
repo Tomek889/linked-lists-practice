@@ -66,6 +66,23 @@ class LinkedList {
 
     return current;
   }
+
+  pop() {
+
+  }
+
+  contains(value) {
+    let current = this.head;
+
+    while (current) {
+      if (current.value === value) {
+        return true;
+      }
+      current = current.nextNode;
+    }
+
+    return false;
+  }
 }
 
 class Node {
@@ -86,4 +103,4 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-console.log(list.at(8));
+console.log(list.contains("hamster"));
