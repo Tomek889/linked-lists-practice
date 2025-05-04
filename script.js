@@ -126,6 +126,25 @@ class LinkedList {
     path += "null";
     return path;
   }
+
+  insertAt(value, index) {
+    const newNode = new Node(value);
+
+    if (index === 0) {
+        this.prepend(value);
+        return;
+    }
+
+    let previousNode = this.at(index - 1);
+    let nextNode = this.at(index);
+
+    if (previousNode) {
+      previousNode.nextNode = newNode;
+      newNode.nextNode = nextNode;
+      return;
+    }
+    throw Error('Index is out-of-bound.');
+  }
 }
 
 class Node {
@@ -139,6 +158,11 @@ class Node {
 const list = new LinkedList();
 
 list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
 
-list.pop();
+list.insertAt("costam", 3);
 console.log(list.toString());
