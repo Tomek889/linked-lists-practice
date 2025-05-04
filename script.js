@@ -18,6 +18,33 @@ class LinkedList {
     current.nextNode = newNode;
   }
 
+  prepend(value) {
+    const newNode = new Node(value);
+
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+
+    newNode.nextNode = this.head;
+    this.head = newNode;
+  }
+
+  size() {
+    let numberOfNodes = 0;
+    let current = this.head;
+
+    while (current) {
+      numberOfNodes++;
+      current = current.nextNode;
+    }
+
+    return numberOfNodes;
+  }
+
+  getHead() {
+    return this.head;
+  }
 }
 
 class Node {
@@ -26,3 +53,8 @@ class Node {
     this.nextNode = nextNode;
   }
 }
+
+let l = new LinkedList();
+l.prepend("cos tam");
+l.append("cos")
+console.log(l.getHead());
