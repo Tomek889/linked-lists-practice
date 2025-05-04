@@ -45,6 +45,20 @@ class LinkedList {
   getHead() {
     return this.head;
   }
+
+  getTail() {
+    let current = this.head;
+
+    while (current && current.nextNode) {
+      current = current.nextNode;
+    }
+
+    return current;
+  }
+
+  at(index) {
+    
+  }
 }
 
 class Node {
@@ -55,6 +69,5 @@ class Node {
 }
 
 let l = new LinkedList();
-l.prepend("cos tam");
-l.append("cos")
-console.log(l.getHead());
+
+console.log(l.getTail());
