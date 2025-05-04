@@ -98,6 +98,19 @@ class LinkedList {
 
     return null;
   }
+
+  toString() {
+    let current = this.head;
+    let path = '';
+
+    while (current) {
+        path += `( ${current.value} ) -> `;
+        current = current.nextNode;
+    }
+
+    path += 'null';
+    return path;
+  }
 }
 
 class Node {
@@ -118,4 +131,4 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-console.log(list.find("turtle"));
+console.log(list.toString());
